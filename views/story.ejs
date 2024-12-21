@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stories</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .story-container {
+      width: 375px;
+      height: 667px;
+      border: 2px solid #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+    }
+    .story-header {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .story-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .story-image {
+      width: 100%;
+      height: calc(100% - 100px);
+      object-fit: cover;
+    }
+    .story-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      height: 50px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .story-footer input {
+      width: 90%;
+      padding: 5px 10px;
+      border-radius: 25px;
+      border: 1px solid #fff;
+      color: #fff;
+      background: transparent;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <% if (stories && stories.length > 0) { %>
+    <div class="story-container">
+      <div class="story-header">
+        <img src="/images/uploads/<%= stories[0].user.picture %>" alt="profile">
+        <span><%= stories[0].user.username %></span>
+      </div>
+      <img src="/images/uploads/<%= stories[0].story %>" class="story-image" alt="Story">
+      <div class="story-footer">
+        <form action="story-deatil" method="post">
+          <input type="text" placeholder="Send message...">
+          <button type=""></button>
+        </form>
+      </div>
+    </div>
+  <% } else { %>
+    <p>No stories available.</p>
+  <% } %>
+</body>
+<script>
+  setTimeout(() => {
+    window.location.href = '/feed';
+  }, 2000); // Redirect to feed page after 5 seconds
+</script>
+</html>

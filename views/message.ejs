@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Chat Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-1/4 bg-white shadow-md">
+      <div class="p-4 border-b">
+        <h1 class="text-xl font-bold">Chats</h1>
+      </div>
+      <div class="p-4 space-y-4 overflow-y-auto">
+        <!-- Chat List -->
+        <div class="flex items-center space-x-3 cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
+          <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full">
+          <div>
+            <h2 class="font-semibold">John Doe</h2>
+            <p class="text-sm text-gray-500">Hello! How are you?</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-3 cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
+          <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full">
+          <div>
+            <h2 class="font-semibold">Jane Smith</h2>
+            <p class="text-sm text-gray-500">See you tomorrow!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="flex-1 flex flex-col">
+      <div class="flex items-center justify-between bg-white p-4 border-b">
+        <div class="flex items-center space-x-3">
+          <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full">
+          <h2 class="font-semibold">John Doe</h2>
+        </div>
+        <button class="text-gray-600 hover:text-black">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5m-16.5 5.25h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+        <!-- Chat Messages -->
+        <div class="flex justify-start">
+          <div class="bg-white p-3 rounded-lg shadow-md max-w-xs">
+            <p>Hey! What's up?</p>
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <div class="bg-blue-500 text-white p-3 rounded-lg shadow-md max-w-xs">
+            <p>All good! You?</p>
+          </div>
+        </div>
+      </div>
+      <!-- Message Input -->
+      <div class="p-4 bg-white border-t">
+        <div class="flex items-center space-x-3">
+          <input type="text" placeholder="Type a message..." class="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <button class="text-blue-500 hover:text-blue-600">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12H3m18 0l-9 9m9-9l-9-9" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

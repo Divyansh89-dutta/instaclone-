@@ -1,0 +1,58 @@
+<% include ./partials/header.ejs %>
+
+<form hidden id="fileform" method="post" enctype="multipart/form-data" action="/upload">
+  <input id="file" type="file" name="image">
+</form>
+
+<div class="w-full min-h-screen bg-zinc-900 text-white py-5">
+  <div class="flex justify-between items-center px-4">
+    <a class="text-sm text-blue-500" href="/profile"><i class="ri-arrow-left-s-line"></i> profile</a>
+    <h2 class="leading-none text-sm">Edit Profile</h2>
+    <a class="text-sm" href="/feed"><i class="ri-home-line"></i> home</a>
+  </div>
+
+  <div class="flex flex-col items-center gap-4 mt-10">
+    <!-- Profile Image -->
+    <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-pink-500 rounded-full overflow-hidden shadow-lg">
+      <img class="w-full h-full object-cover" src="/images/uploads/<%= user.picture %>" alt="Profile Picture">
+    </div>
+    <button id="editbtn" class="text-blue-500 capitalize text-sm hover:underline transition-all">Edit Picture</button>
+  </div>
+
+  <!-- Update Account Details Form -->
+  <div class="gap-5 px-4 mt-10">
+    <h3 class="text-lg leading-none text-blue-500">Edit Account Details</h3>
+    <hr class="opacity-30 my-3">
+
+    <form class="w-full" action="/update" method="post">
+      <!-- Username Input -->
+      <input class="px-4 py-3 mt-2 border-2 border-zinc-800 rounded-md block w-full bg-zinc-900 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all" 
+             type="text" placeholder="Username" name="username" value="<%= user.username %>" required>
+
+      <!-- Name Input -->
+      <input class="px-4 py-3 mt-2 border-2 border-zinc-800 rounded-md block w-full bg-zinc-900 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all" 
+             type="text" placeholder="Name" name="name" value="<%= user.name %>" required>
+
+      <!-- Bio Textarea -->
+      <textarea class="px-4 py-3 mt-2 border-2 border-zinc-800 rounded-md block w-full bg-zinc-900 text-sm text-gray-300 placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all" 
+                placeholder="Bio" name="bio" required><%= user.bio %></textarea>
+
+      <!-- Submit Button -->
+      <input class="w-full bg-gradient-to-r from-blue-500 to-pink-500 text-white px-4 py-3 rounded-md mt-6 cursor-pointer hover:scale-105 transition-all" 
+             type="submit" value="Update Details">
+    </form>
+  </div>
+</div>
+
+<script>
+  document.querySelector("#editbtn").addEventListener("click", function() {
+    document.querySelector("#file").click();
+  })
+
+  document.querySelector("#file")
+    .addEventListener("change", function() {
+      document.querySelector("#fileform").submit();
+    });
+</script>
+
+<% include ./partials/footer.ejs %>

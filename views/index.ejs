@@ -1,0 +1,72 @@
+<% include ./partials/header.ejs %>
+<div class="w-full min-h-screen bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 flex items-center justify-center">
+  <!-- Registration Card -->
+  <div class="relative flex flex-col items-center gap-6 px-8 py-12 bg-opacity-75 bg-zinc-800 backdrop-blur-md rounded-2xl shadow-lg w-full max-w-md">
+    <!-- Neon Glow Circles -->
+    <div class="absolute -top-12 -left-12 w-24 h-24 bg-blue-500 rounded-full blur-2xl opacity-30"></div>
+    <div class="absolute bottom-0 right-0 w-32 h-32 bg-pink-500 rounded-full blur-2xl opacity-20"></div>
+
+    <!-- Logo -->
+    <img class="w-28 h-auto drop-shadow-lg" src="/images/logo.png" alt="Logo">
+
+    <!-- Registration Form -->
+    <form class="w-full" action="/register" method="post">
+      <!-- Username Field -->
+      <div class="relative">
+        <input 
+          class="px-4 py-3 w-full bg-zinc-900 text-sm text-gray-300 placeholder-gray-500 border border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-zinc-800 transition-all"
+          type="text" 
+          placeholder="Username" 
+          name="username"
+          required>
+        <i class="ri-user-line absolute top-3.5 right-4 text-gray-500 group-focus:text-blue-500"></i>
+      </div>
+
+      <!-- Email Field -->
+      <div class="relative mt-4">
+        <input 
+          class="px-4 py-3 w-full bg-zinc-900 text-sm text-gray-300 placeholder-gray-500 border border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-zinc-800 transition-all"
+          type="email" 
+          placeholder="Email" 
+          name="email"
+          required>
+        <i class="ri-mail-line absolute top-3.5 right-4 text-gray-500 group-focus:text-green-500"></i>
+      </div>
+
+      <!-- Name Field -->
+      <div class="relative mt-4">
+        <input 
+          class="px-4 py-3 w-full bg-zinc-900 text-sm text-gray-300 placeholder-gray-500 border border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-zinc-800 transition-all"
+          type="text" 
+          placeholder="Name" 
+          name="name"
+          required>
+        <i class="ri-profile-line absolute top-3.5 right-4 text-gray-500 group-focus:text-purple-500"></i>
+      </div>
+
+      <!-- Password Field -->
+      <div class="relative mt-4">
+        <input 
+          class="px-4 py-3 w-full bg-zinc-900 text-sm text-gray-300 placeholder-gray-500 border border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-zinc-800 transition-all"
+          type="password" 
+          placeholder="Password" 
+          name="password"
+          required>
+        <i class="ri-lock-line absolute top-3.5 right-4 text-gray-500 group-focus:text-pink-500"></i>
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        class="w-full bg-gradient-to-r from-blue-500 to-pink-500 text-white text-sm font-medium px-4 py-3 rounded-lg mt-6 hover:scale-105 hover:shadow-xl transition-all">
+        Make New Account
+      </button>
+    </form>
+
+    <!-- Login Prompt -->
+    <p class="text-sm text-gray-400 mt-4">
+      Already have an account? 
+      <a href="/login" class="text-blue-400 hover:text-pink-400 hover:underline transition-all">Log In</a>
+    </p>
+  </div>
+</div>
+<% include ./partials/footer.ejs %>

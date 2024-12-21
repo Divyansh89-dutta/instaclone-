@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Room</title>
+  <link rel="stylesheet" href="/styles/chat.css">
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <div id="chat-container">
+    <h1>Chat Room</h1>
+    <div id="messages-container">
+      <% chatRoom.messages.forEach((message) => { %>
+        <div class="message">
+          <strong><%= message.sender.name || message.sender.username %>:</strong> 
+          <%= message.content %>
+        </div>
+      <% }); %>
+    </div>
+    <div id="message-input">
+      <input type="text" id="message" placeholder="Type your message...">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+  <script>
+    const socket = io();
+
+    // Room ID and User ID from the server
+    const roomId = "<%= chatRoom._id %>";
+    const userId = "<%= user._id %>";
+
+    // Join the chat room
+    socket.emit('joinRoom', { roomId, userId });
+
+    // Send a message
+    document.getElementById('send-btn').addEventListener('click', () => {
+      const messageInput = document.getElementById('message');
+      const message = messageInput.value.trim();
+      if (message) {
+        socket.emit('sendMessage', { roomId, senderId: userId, message });
+        messageInput.value = '';
+      }
+    });
+
+    // Receive and display messages
+    socket.on('receiveMessage', (message) => {
+      const messagesContainer = document.getElementById('messages-container');
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message');
+      messageDiv.innerHTML = `<strong>${message.sender.name || message.sender.username}:</strong> ${message.content}`;
+      messagesContainer.appendChild(messageDiv);
+    });
+  </script>
+</body>
+</html>
